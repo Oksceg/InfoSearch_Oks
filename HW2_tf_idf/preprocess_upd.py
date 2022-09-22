@@ -25,5 +25,5 @@ def get_ep_lems(): #получение словаря 'номер эпизода
     return ep_lems
 
 # import json
-# with open("all_eps_lems_.json", "w", encoding="utf-8") as f:
+# with open("all_eps_lems.json", "w", encoding="utf-8") as f:
 #     json.dump(get_ep_lems(), f)
