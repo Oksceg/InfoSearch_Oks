@@ -1,5 +1,4 @@
-import re, pymorphy2, json
-
+import json
 from tqdm import tqdm
 
 def corpus_divide(filename): #разделение изначального файла с данными на 4 части
@@ -35,13 +34,18 @@ def get_whole_corpus(filename):
                 docs[answer["text"]] = qst_lems
     return docs
 
-with open(f"noprep_docs.json", "w", encoding="utf-8") as f: #запись корпуса (50000) ('ответ — вопрос') в 1 файл
+"""запись корпуса (50000) ('ответ — вопрос') в 1 файл;
+используется при запуске main.py;"""
+with open(f"noprep_docs.json", "w", encoding="utf-8") as f:
     json.dump(get_whole_corpus("../HW3_bm25/data.jsonl"), f)
 
 corpus_pieces = corpus_divide("../HW3_bm25/data.jsonl")
 
+
+"""запись корпуса ('ответ — вопрос') в 4 файла, 
+из которых потом создаются файлы с эмбеддингами в get_embeds_files.py"""
 i = 1
 for corpus_piece in corpus_pieces:
-    with open(f"noprep_data_{i}.json", "w", encoding="utf-8") as f: #запись корпуса ('ответ — вопрос') в 4 файла
+    with open(f"noprep_data_{i}.json", "w", encoding="utf-8") as f:
         json.dump(get_corpus(corpus_piece), f)
     i += 1
