@@ -20,6 +20,8 @@ def index():
                 answers, search_time = bm25_search(query)
             elif method == "value3":
                 answers, search_time = tf_idf_search(query)
+            else:
+                answers, search_time = ["Ничего не найдено"], ""
         return render_template('index.html', answers=answers, search_time=search_time)
     return render_template('index.html', answers=[])
 
