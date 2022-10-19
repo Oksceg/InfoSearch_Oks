@@ -1,0 +1,35 @@
+<html>
+<head>
+	<title>Поиск по ответам mail.ru</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+<form>
+
+  <h2>Столько тайн, столько загадок...</h2>
+  <h1>И еще больше ответов!</h1>
+  <h3>Корпус ответов mail.ru про любовь</h3>
+
+<input type="text" placeholder = "Введите запрос" name="query"></input>
+<br></br>
+<center><select name="select"> <!--Supplement an id here instead of using 'name'-->
+  <center><option selected value disabled >Выберите метод поиска</option></center>
+  <center><option value="value1">BERT</option></center>
+  <center><option value="value2">BM25</option></center>
+  <center><option value="value3">TF-IDF</option></center>
+</select></center>
+<button type="submit"></button>
+</form>
+
+<div><ul>
+{% for answer in answers %}
+<li>{{ answer }}</li>
+<br></br>
+{% endfor %}
+<center><br>{{ search_time }}</br></center>
+</ul></div>
+
+
+</body>
+</html>
