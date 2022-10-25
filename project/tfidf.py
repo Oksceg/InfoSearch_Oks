@@ -42,11 +42,11 @@ def tfidf_result_search(json_data, query_vec_):
     return top15
 
 def tf_idf_search(some_query):
+    start_time = time.time()
     with open("prep_docs.json", 'r', encoding = "utf-8") as a:
         pr_corpus_data = json.load(a)
     # tfidf_matrix = np.load('tfidf.npy')
     qstr3, q3 = index_query(some_query, fit_vectorizer(pr_corpus_data))
-    start_time = time.time()
     query_answers = tfidf_result_search(pr_corpus_data, q3)
     end = time.time()
     return query_answers, "%s seconds" % float('{:.3f}'.format(end - start_time))

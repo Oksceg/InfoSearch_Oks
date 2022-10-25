@@ -31,12 +31,12 @@ def bert_result_search(corpus, corpus_mtrx_, query_vec_): #расчет сход
 
 
 def bert_search(some_query):
+    start_time = time.time()
     qstr, q = index_query(some_query)
     with open("noprep_docs.json", 'r', encoding = "utf-8") as a:
         corpus_data = json.load(a)
     file_matrix = open("matrix", "rb")
     matrix = np.load(file_matrix)
-    start_time = time.time()
     res = bert_result_search(corpus_data, matrix, q)
     end = time.time()
     return res, "%s seconds" % float('{:.3f}'.format(end - start_time))
