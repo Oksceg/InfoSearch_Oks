@@ -33,7 +33,7 @@ def bm25_search(some_query):
         pr_corpus_data = json.load(file)
     count_vectorizer = CountVectorizer()
     bm25_matrix = scipy.sparse.load_npz('bm25sparse_matrix.npz')
-    q2 = index_query(some_query, fit_vectorizer(pr_corpus_data, count_vectorizer))  # Запрашиваем запрос от пользователя
+    q2 = index_query(some_query, fit_vectorizer(pr_corpus_data, count_vectorizer))
     scores = bm25_matrix.dot(q2.T)
     sorted_score_index = np.argsort(scores, axis=0)[::-1]
     query_answers = np.array(list(pr_corpus_data.keys()))[sorted_score_index.ravel()][:15]
